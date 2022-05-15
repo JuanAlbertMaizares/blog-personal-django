@@ -21,7 +21,7 @@ class Category(TimeStampedModel):
         """Unicode representation of Category."""
         return self.name
 class Tag(TimeStampedModel):
-    """Model definition for Category."""
+    """Etiqueta descriptiva sobre la entrada."""
 
     # TODO: Define fields here
     name = models.CharField('nombre', max_length=30)
@@ -55,8 +55,8 @@ class Entry(TimeStampedModel):
     class Meta:
         """Meta definition for Category."""
 
-        verbose_name = 'Etiqueta'
-        verbose_name_plural = 'Etiquetas'
+        verbose_name = 'Entrada'
+        verbose_name_plural = 'Entradas'
 
     def __str__(self):
         """Unicode representation of Category."""

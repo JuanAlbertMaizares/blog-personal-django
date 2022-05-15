@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-
+    #esta propiedad nos indica con que campo se debe iniciar session.
     USERNAME_FIELD = 'email'
 
     REQUIRED_FIELDS = ['full_name']
