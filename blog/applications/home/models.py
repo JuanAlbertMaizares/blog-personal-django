@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 from model_utils.models import TimeStampedModel
 
+
 class Home( TimeStampedModel):
     """Model definition for Home."""
 

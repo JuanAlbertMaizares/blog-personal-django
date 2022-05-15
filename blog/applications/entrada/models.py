@@ -3,6 +3,7 @@ from django.conf import settings
 # Create your models here.
 from model_utils.models import TimeStampedModel
 from ckeditor_uploader.fields import RichTextUploadingField
+from .managers import EntryManager
 
 class Category(TimeStampedModel):
     """Model definition for Category."""
@@ -38,7 +39,7 @@ class Tag(TimeStampedModel):
     
 class Entry(TimeStampedModel):
     """Model definition for Category."""
-
+    objects = EntryManager()
     # TODO: Define fields here
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
