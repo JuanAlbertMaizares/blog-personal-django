@@ -15,4 +15,4 @@ class EntryManager(models.Manager):
     def entradas_recientes(self):
         return self.filter(
             public=True,
-        ).order_by('-created')[:16]
+        ).order_by('-created')[:6]
