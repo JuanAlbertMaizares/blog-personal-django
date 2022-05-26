@@ -1,0 +1,14 @@
+# git ignore
+blog/secret.json
+#
+blog/applications/users/__pycache__/*
+blog/applications/users/migrations/*
+blog/applications/home/__pycache__/*
+blog/applications/home/migrations/*
+blog/applications/__pycache__/*
+blog/applications/entrada/__pycache__/*
+blog/applications/entrada/migrations/*
+blog/applications/favoritos/__pycache__/*
+blog/applications/favoritos/migrations/*
+blog/__pycache__/* 
+blog/media/*
