@@ -10,16 +10,16 @@ class UserRegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Contraseña'
+                'placeholder': 'Contraseña',
             }
         )
     )
     password2 = forms.CharField(
-        label='Contraseña',
+        label='Contraseña 2',
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Repetir Contraseña'
+                'placeholder': 'Repetir Contraseña',
             }
         )
     )
@@ -35,6 +35,33 @@ class UserRegisterForm(forms.ModelForm):
             'genero',
             'date_birth',
         )
+        widgets = {
+            'date_birth': forms.DateInput(
+                attrs={
+                    'type': 'date',
+                }
+            ),
+            'ocupation': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ocupacion...',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'placeholder': 'Email...',
+                }
+            ),
+            'full_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nombres...',
+                }
+            ),
+            'genero': forms.TextInput(
+                attrs={
+                    'placeholder': 'Genero...',
+                }
+            ),
+        }
     
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:

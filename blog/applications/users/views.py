@@ -25,21 +25,19 @@ from .models import User
 
 
 class UserRegisterView(FormView):
-    template_name = 'plantillas/register.html'
+    template_name = 'users/register.html'
     form_class = UserRegisterForm
     success_url = reverse_lazy('users_app:user-login')
 
-    def form_valid(self, form):
-        #
+    def form_valid(self, form): 
         User.objects.create_user(
-            form.cleaned_data['email'],
-            form.cleaned_data['full_name'],
+            form.cleaned_data['email'], 
             form.cleaned_data['password1'],
-            ocupation=form.cleaned_data['apellidos'],
+            full_name=form.cleaned_data['full_name'],
+            ocupation=form.cleaned_data['ocupation'],
             genero=form.cleaned_data['genero'],
             date_birth=form.cleaned_data['date_birth'],
         )
-        # enviar el codigo al email del user
         return super(UserRegisterView, self).form_valid(form)
 
 
