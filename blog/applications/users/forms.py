@@ -55,12 +55,7 @@ class UserRegisterForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'Nombres...',
                 }
-            ),
-            'genero': forms.TextInput(
-                attrs={
-                    'placeholder': 'Genero...',
-                }
-            ),
+            ), 
         }
     
     def clean_password2(self):
