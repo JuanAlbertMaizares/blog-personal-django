@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 # Create your views here.
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import (ListView, )
+from django.views.generic import (ListView, View)
 
-from .models import Favorites
+from .models import Favorites, Entry
 
 
 class UserPageView(LoginRequiredMixin, ListView):
@@ -14,3 +15,15 @@ class UserPageView(LoginRequiredMixin, ListView):
     
     def get_queryset(self):
         return Favorites.objects.entradas_user(self.request.user)     
+class AddFavoritosView(LoginRequiredMixin, View):
+    login_url = reverse_lazy('users_app:user-login')
+    
+    def post(self, request, *args, **kwargs):
+        usuario = self.request.user
+        entrada = Entry.objects.get(id = self.kwargs['pk'])
+        Favorites.objects.create(
+            user=usuario, entry=entrada,
+        )
+        return HttpResponseRedirect(
+            reverse('favoritos_app:perfil', )
+        )
