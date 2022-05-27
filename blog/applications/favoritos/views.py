@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 # Create your views here.
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import (ListView, View)
+from django.views.generic import (ListView, View, DeleteView)
 
 from .models import Favorites, Entry
 
@@ -27,3 +27,7 @@ class AddFavoritosView(LoginRequiredMixin, View):
         return HttpResponseRedirect(
             reverse('favoritos_app:perfil', )
         )
+
+class FavoritesDeleteView(DeleteView):
+    model = Favorites
+    success_url = reverse_lazy('favoritos_app:perfil')
